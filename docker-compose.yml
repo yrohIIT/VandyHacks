@@ -1,0 +1,33 @@
+version: '3'
+    
+services:
+    db:
+      image: postgres
+      restart: always
+      environment:
+        - POSTGRES_DB=vandyhacks
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+      ports:
+        - "5432:5432"
+      tty: true
+      healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U postgres"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+      container_name: vandyhacks_db
+    web:
+      build: .
+      command: >
+        sh -c "python manage.py migrate &&
+        python manage.py runserver 0.0.0.0:8000"
+      volumes:
+        - .:/code
+      ports:
+        - "8000:8000"
+      depends_on:
+        db:
+          condition: service_healthy
+      tty: true
+      container_name: vandyhacks_web
