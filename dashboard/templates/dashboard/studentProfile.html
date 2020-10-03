@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Student</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+    <body>
+        {% if owner %}
+            <div><a href="{% url 'edit' student.username %}"></a></div>
+        {% endif}
+    
+        <div>{{student.name}}</div>
+        <div>{{student.zipode}}</div>
+        <div>{{student.major}}</div>
+        <div>{{student.meet}}</div>
+        <div>{{student.picture}}</div>
+        <div>{{student.description}}</div>
+        <div>{{student.schoolYear}}</div>
+        <div>{{student.contactInfo}}</div>
+        <ul>
+            {% for time in timeSlots %}
+            <li>{{ time }}</li>
+            {% endfor %}
+        </ul>
+        <ul>
+            {% for interest in interests %}
+            <li>{{ interest }}</li>
+            {% endfor %}
+        </ul>
+        <div>{{student.status}}</div>
+
+        <h2>Mentors</h2>
+        <ul>
+            {% for mentor in mentors %}
+            <a href="{% url 'dashboard' mentor.username %}"><li>{{ mentor.name }}</li></a>
+                {% if owner %}
+                    <div><a href="{% url 'removeMentor' mentor.id %}">remove</a></div>
+                {% endif}
+            {% empty %}
+                <li>No mentor yet</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
