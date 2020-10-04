@@ -5,26 +5,19 @@ from .models import Student, Mentor, User, Match
 
 def register(request):
     if request.method == 'POST':
-        
+
+        newuser = User.objects.create_user (
+            request.POST.get('username'),
+            "email@email.com",
+            request.POST.get('password'),
+        )
+        newuser.save()
         if request.POST.get('student'):
             return render(request, 'register/student_register.html')
         else:
             return render(request, 'register/mentor_register.html')
-        #return
+
     return render(request, 'register/register.html')
-    if request.user.is_authenticated:
-        newstudent = Student.objects.create(
-            user = request.user, 
-            f_name = 'John', 
-            l_name = 'Doe', 
-            zipcode = 11378, 
-            contact_info = 1, 
-            online = 1,  
-            major = 'CS', 
-            school_year = 2020, 
-            description = 'test example', 
-        )
-        newstudent.save()
 
 def mentor_register(request):
     if request.method == 'POST': 
