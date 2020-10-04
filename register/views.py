@@ -13,24 +13,50 @@ def register(request):
     if request.user.is_authenticated:
         newstudent = student.objects.create(
             user = request.user, 
-            Fname = 'John', 
-            Lname = 'Doe', 
+            f_name = 'John', 
+            l_name = 'Doe', 
             zipcode = 11378, 
-            contactInfo = 1, 
+            contact_info = 1, 
             online = 1,  
             major = 'CS', 
-            schoolYear = 2020, 
+            school_year = 2020, 
             description = 'test example', 
         )
         newstudent.save()
 
 def mentor_register():
-    if request.POST.get('first_name', 'last_name','education', 'zipcode' 'Credentials', 'contact_info', 'area_of_interest'):
-        return 
+    if request.method == 'POST': 
+        newmentor = mentor.objects.create (
+            user = request.user, 
+            f_name = 'first_name', 
+            l_name = 'last_name', 
+            education = 'education', 
+            zipcode = 'zipcode', 
+            Credentials = 'Credentials', 
+            contact_info = 'contact_info', 
+            area_of_interest = 'area_of_interest'
+
+        )
+        newmentor.save()
+        return
+
 
 def student_register():
-    if request.POST.get('first_name', 'last_name', 'major', 'zipcode', 'school_year', 'contact_info', 'area_of_interest'):
+    if request.method == 'POST': 
+        newstudent = student.objects.create (
+            user = request.user, 
+            f_name = 'first_name', 
+            l_name = 'last_name', 
+            major = 'major', 
+            zipcode = 'zipcode', 
+            school_year = 'school_year', 
+            contact_info = 'contact_info', 
+            area_of_interest = 'area_of_interest'
+
+        )
+        newstudent.save()
         return
+        
 
 
 
