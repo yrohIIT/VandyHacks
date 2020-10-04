@@ -25,14 +25,10 @@ def register(request):
             description = 'test example', 
         )
         newstudent.save()
-<<<<<<< HEAD
-||||||| 1baa24d
-        
-=======
 
-def mentor_register():
+def mentor_register(request):
     if request.method == 'POST': 
-        newmentor = mentor.objects.create (
+        newmentor = Mentor.objects.create (
             user = request.user, 
             f_name = 'first_name', 
             l_name = 'last_name', 
@@ -44,12 +40,12 @@ def mentor_register():
 
         )
         newmentor.save()
-        return
+        return HttpResponseRedirect(reverse("dashboard/dashboard", args=(request.user.mentor.user_id,)))
 
 
-def student_register():
+def student_register(request):
     if request.method == 'POST': 
-        newstudent = student.objects.create (
+        newstudent = Student.objects.create (
             user = request.user, 
             f_name = 'first_name', 
             l_name = 'last_name', 
@@ -61,9 +57,9 @@ def student_register():
 
         )
         newstudent.save()
-        return
+        print("here")
+        return HttpResponseRedirect(reverse("match_page"))
         
 
 
 
->>>>>>> 0f0a5f02be9e596c9bb8f442daf2e69cd3d4422c
