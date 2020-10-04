@@ -1,0 +1,44 @@
+<html> 
+    <head>
+
+    </head>
+    <body>
+    <form method="POST" class="form-group">
+{% csrf_token %}
+<h1> Register as a Mentor</h1>
+<label for=" First_Name"><b>First Name</b></label>
+    <input type="text" name="first_name" id="first_name" required>
+<label for=" Last_Name"><b>Last Name</b></label>
+    <input type="text" name="last_name" id="last_name" required>
+<label for="Education"><b>Education</b></label>
+    <input type="text" name="education" id="education" required>
+<label for="Zipcode"><b>Zipcode</b></label>
+    <input type="text" name="zipcode" id="zipcode" required>
+<label for="Credentials"><b>Credentials</b></label>
+    <input type="text" name="Credentials" id="Credentials" required>
+<label for="Contact Info"><b>Contact Info</b></label>
+    <input type="text" name="contact_info" id="contact_info" required>
+<label for="Area of Interest"><b>Area of Interest</b></label>
+    <input type="text" name="area_of_interest" id="area_of_interest" required>
+    
+<p>Select Learning Type:</p>
+    <input type="radio" id="l1" name="l1">
+    <label for="av1">Online</label><br>
+    <input type="radio" id="l2" name="l2">
+    <label for="av2">In-Person</label><br>  
+    <input type="radio" id="l3" name="l3">
+    <label for="av3">Both</label><br><br>
+    
+    
+<p>Select general availability:</p>
+    <input type="radio" id="av1" name="av1">
+    <label for="av1">Mornings</label><br>
+    <input type="radio" id="av2" name="av2">
+    <label for="av2">Afternoons</label><br>  
+    <input type="radio" id="av3" name="av3">
+    <label for="av3">Evenings</label><br><br>
+    
+
+    </form>
+</body>
+</html>
