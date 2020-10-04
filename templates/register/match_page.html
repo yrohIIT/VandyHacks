@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>MATCH PAGE</title>
+    </head>
+    <body>
+        <h1>Match Page</h1>
+
+        <form id="match_form" action="/dashboard/match_page/" method="POST">
+            {% csrf_token %}
+            
+            <div>
+                <p>{{ mentor.Fname }}</p>
+                <p>{{ mentor.Lname }}</p>
+                <p>{{ mentor.zipcode }}</p>
+            </div>
+            <input type="text" id="mentor" name="mentor" value="{{mentor.id}}" hidden>
+            <button type="submit" id="yes" name="yes" value="1">Yes</button>
+            <br>
+            <button type="submit" id="no" name="no" value="0">No</button>
+            <button type="submit" id="profile" name="profile" value="0">Start Profile</button>
+        </form>
+    </body>
+</html>

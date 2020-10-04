@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Mentor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+    <body>
+        
+        <div>Name: {{mentor.Fname}} {{mentor.Fname}}</div>
+        <div>Zipcode: {{mentor.zipcode}}</div>
+        <div>Education{{mentor.education}}</div>
+        <div>Description:{{mentor.description}}</div>
+        <div>Contact Info: {{mentor.contactInfo}}</div>
+
+        <ul>
+            {% for student in students %}
+                <li>{{ student.Fname }}</li>
+            {% empty %}
+                <li>No Students yet</li>
+            {% endfor %}
+        </ul>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+        </li>
+
+    </body>
+</html>
